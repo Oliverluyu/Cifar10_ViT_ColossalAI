@@ -5,7 +5,7 @@ import torch.distributed as dist
 import torch.nn as nn
 import transformers
 from args import parse_demo_args
-from data import Cifar10Dataset, cifar_collator
+from data import DogFoodDataset, dogfood_collator
 from torch.optim import Optimizer
 from torch.optim.lr_scheduler import _LRScheduler as LRScheduler
 from torch.utils.data import DataLoader
@@ -156,8 +156,8 @@ def main():
 
     # Prepare Dataset
     image_processor = ViTImageProcessor.from_pretrained(args.model_name_or_path)
-    train_dataset = Cifar10Dataset(image_processor, args.tp_size, split="train")
-    eval_dataset = Cifar10Dataset(image_processor, args.tp_size, split="test")  # validation
+    train_dataset = DogFoodDataset(image_processor, args.tp_size, split="train")
+    eval_dataset = DogFoodDataset(image_processor, args.tp_size, split="test")  # validation
     num_labels = train_dataset.num_labels
 
     # Load pretrained ViT model
@@ -200,10 +200,10 @@ def main():
 
     # Prepare dataloader
     train_dataloader = plugin.prepare_dataloader(
-        train_dataset, batch_size=args.batch_size, shuffle=True, drop_last=True, collate_fn=cifar_collator
+        train_dataset, batch_size=args.batch_size, shuffle=True, drop_last=True, collate_fn=dogfood_collator
     )
     eval_dataloader = plugin.prepare_dataloader(
-        eval_dataset, batch_size=args.batch_size, shuffle=True, drop_last=True, collate_fn=cifar_collator
+        eval_dataset, batch_size=args.batch_size, shuffle=True, drop_last=True, collate_fn=dogfood_collator
     )
 
     # Set optimizer
