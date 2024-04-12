@@ -1,3 +1,7 @@
 ViT_README.md
 
 .idea/
+
+*.docx
+
+throughput_memory_usage_plot.py
