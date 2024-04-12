@@ -19,7 +19,7 @@ ViT training module is adapted with ColossalAI Boosting API loaded with a plugin
 
 Pretrained ViT utilizes Gemini plugin for fine-tuning of 10 epochs. Here is the training loss and accuracy chart. You may notice that ViT model quickly converge after only 4 epochs. 
 
-![image](https://github.com/Oliverluyu/Cifar10_ViT_ColossalAI/assets/57708978/dbbab642-05b2-4873-ae6a-9a9f7ba1462e)
+![image](https://github.com/Oliverluyu/Cifar10_ViT_ColossalAI/assets/57708978/dbbab642-05b2-4873-ae6a-9a9f7ba1462e | height=100)
 
 ## Different Plugins Benchmark Comparison
 
@@ -27,11 +27,11 @@ Pretrained ViT utilizes Gemini plugin for fine-tuning of 10 epochs. Here is the 
 
 Throughput denotes the number of batches processed per second, indicating four plugins performance across different batch sizes. low_level_zero and torch_ddp_fp16 plugins have high throughput across batch sizes and Gemini also has relatively high throughput as batch size increases. torch_ddp, however, does not have a higher throughput when batch size goes up.
 
-![image](https://github.com/Oliverluyu/Cifar10_ViT_ColossalAI/assets/57708978/5712e2db-d8a2-43f4-a8c5-fb99d34e880e)
+![image](https://github.com/Oliverluyu/Cifar10_ViT_ColossalAI/assets/57708978/5712e2db-d8a2-43f4-a8c5-fb99d34e880e | height=100)
 
 
 ### Memory Usage per GPU for Plugins
 
 torch_ddp has the highest memory occupation per GPU compared to other plugins, while Gemini can be considered memory efficient as it only has less than a half memory usage per GPU in comparison with the former. The memory usage for Gemini plugin are less than 1GB per GPU when batch size is smaller than 64 and it merely reaches 1.6 GB with batch size climbing up to 128.
 
-![image](https://github.com/Oliverluyu/Cifar10_ViT_ColossalAI/assets/57708978/e774d838-6c82-4fda-a1e4-dfb412a347b1)
+![image](https://github.com/Oliverluyu/Cifar10_ViT_ColossalAI/assets/57708978/e774d838-6c82-4fda-a1e4-dfb412a347b1 | height=100)
